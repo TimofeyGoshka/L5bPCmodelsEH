@@ -1,0 +1,5 @@
+//moddir mod
+nrn_load_dll("mod/nrnmech.dll")
+
+load_file("nrngui.hoc")
+load_file("init.hoc")
