@@ -4,7 +4,7 @@
 
 ## 1. Goal
 
-Model a cortical column in **NEURON**, centred on the layer 5 (LP5/ET) pyramidal neuron, plus a thalamic component, in order to test the hypothesis described in `docs/literature/Hypercontextualisation_NBR_submit.docx` (apical hypercontextualisation under 5-HT2A agonism).
+Model a cortical column in **NEURON**, centred on the layer 5 (LP5/ET) pyramidal neuron, plus a thalamic component, in order to test the hypothesis described in `docs/literature/Hypercontextualisation_NBR_submit.docx.txt` (apical hypercontextualisation under 5-HT2A agonism).
 
 **End product:** paper
 **Time available per week:** 3 hours
