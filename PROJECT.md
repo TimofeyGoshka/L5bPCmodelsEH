@@ -6,8 +6,8 @@
 
 Model a cortical column in **NEURON**, centred on the layer 5 (LP5/ET) pyramidal neuron, plus a thalamic component, in order to test the hypothesis described in `docs/literature/Hypercontextualisation_NBR_submit.docx` (apical hypercontextualisation under 5-HT2A agonism).
 
-**End product:** _TBD (paper / thesis chapter / learning project / other)_
-**Time available per week:** _TBD_
+**End product:** paper
+**Time available per week:** 3 hours
 
 ## 2. Hypothesis (as stated in the source paper, not yet scoped)
 
@@ -118,6 +118,7 @@ cortical-column-5ht2a/
 ├── tests/                # sanity tests (baseline behaviour)
 ├── results/              # outputs, mostly git-ignored
 ├── environment.yml
+├── legacy/
 └── .gitignore
 ```
 
