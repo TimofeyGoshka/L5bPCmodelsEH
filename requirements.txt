@@ -1,0 +1,4 @@
+# Python 3.12.7
+# NEURON 9.0.1: Windows installer at C:\nrn (not installable via pip)
+numpy==2.5.1
+matplotlib==3.11.1

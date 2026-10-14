@@ -1,4 +1,0 @@
-# Python 3.12.7
-neuron==9.0.1
-numpy==2.5.1
-matplotlib==3.11.1

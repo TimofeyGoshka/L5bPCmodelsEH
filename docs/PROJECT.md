@@ -37,7 +37,7 @@ Open points the paper itself leaves unresolved: the location of the postsynaptic
 ### Phase 0: Reset and framework _(timebox: ~1 week, adjust)_
 - [ ] Create repo structure, pinned environment (`environment.yml`), `.gitignore`
 - [ ] Compile NEURON mechanisms (`nrnivmodl`) from a clean checkout
-- [ ] Audit existing code: what exists, what runs, what has been validated against a published result
+- [ ] Audit existing code: what exists, what runs, what has been validated against a published result (done; notes in legacy/README.md)
 - [ ] Freeze feature additions; move ideas to `docs/backlog.md`
 - [ ] Write `docs/DECISIONS.md` (first entry: NEURON throughout)
 
@@ -134,10 +134,17 @@ Every run saves its config, random seed and git commit hash with its results.
 
 ## 9. Decision log _(newest first; full detail in `docs/DECISIONS.md`)_
 
-- _YYYY-MM-DD_: Simulator: NEURON throughout (previously undecided between NEURON and Brian2).
-- _YYYY-MM-DD_: Literature review precedes scientific scoping and acceptance criteria.
-
----
+- 2026-10-10: No separate audit document. The five legacy scripts were reviewed
+  in chat; warnings are kept in the notes file in legacy/. Reusable parts:
+  hayneuron.py -> src/cells/hay_wrapper.py, tools.py -> src/tools.py.
+- 2026-10-10: Hay model kept unmodified in thirdparty/hay2011/; all changes go
+  in our own wrapper in src/.
+- 2026-10-10: Environment pinned with requirements.txt (Python 3.12.7,
+  NEURON 9.0.1, numpy 2.5.1, matplotlib 3.11.1); conda is not used.
+- 2026-10-10: Simulator: NEURON throughout (previously undecided between
+  NEURON and Brian2).
+- 2026-10-10: Literature review precedes scientific scoping and acceptance
+  criteria.
 
 ## Appendix: Task card template
 
