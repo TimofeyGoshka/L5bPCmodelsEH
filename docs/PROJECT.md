@@ -6,7 +6,7 @@
 
 Model a cortical column in **NEURON**, centred on the layer 5 (LP5/ET) pyramidal neuron, plus a thalamic component, in order to test the hypothesis described in `docs/literature/Hypercontextualisation_NBR_submit.docx.txt` (apical hypercontextualisation under 5-HT2A agonism).
 
-**End product:** paper
+**End product:** Paper
 **Time available per week:** 3 hours
 
 ## 2. Hypothesis (as stated in the source paper, not yet scoped)
@@ -116,6 +116,8 @@ L5bPCmodelsEH/
 │   └── protocols/hay_protocols.py
 └── tests/                 # test_baseline.py, test_hay_protocols.py
 
+```
+
 Every run saves its config, random seed and git commit hash with its results.
 
 ## 8. Status _(update at the end of each session)_
@@ -129,22 +131,23 @@ Every run saves its config, random seed and git commit hash with its results.
 
 ## 9. Decision log _(newest first; full detail in `docs/DECISIONS.md`)_
 
-- 2026-10-10: No separate audit document. The five legacy scripts were reviewed
-  in chat; warnings are kept in the notes file in legacy/. Reusable parts:
-  hayneuron.py -> src/cells/hay_wrapper.py, tools.py -> src/tools.py.
-- 2026-10-10: Hay model kept unmodified in thirdparty/hay2011/; all changes go
-  in our own wrapper in src/.
-- 2026-10-10: Environment pinned with requirements.txt (Python 3.12.7,
-  NEURON 9.0.1, numpy 2.5.1, matplotlib 3.11.1); conda is not used.
-- 2026-10-10: Simulator: NEURON throughout (previously undecided between
-  NEURON and Brian2).
-- 2026-10-10: Literature review precedes scientific scoping and acceptance
-  criteria.
-  - Protocols use CVode (variable step), like the original demos. Resample
-  to a regular grid before any spectral analysis.
-- Reference for reproduction: original GUI demo (step 0.793 nA = 27 spikes).
+- **Current phase:** 1 (Literature research), just started
+- **Last updated:** 16.10.2026
+- **Phase 0:** complete. Wrapper and protocols reproduce the original Hay
+  demos (step at 0.793 nA = 27 spikes, exact match; BAC plots look like
+  paper Fig 4A); a fresh clone builds and passes both tests.
+- **Phase 1 progress** (details in docs/literature/):
+  1. L5 cell models (Hay et al. 2011 and alternatives): not started
+  2. 5-HT2A effects on L5 cells (numbers for params table): not started
+  3. Thalamic side (relay cell models, layer 1 synapses): not started
+  4. Existing computational work on apical drive / thalamocortical loops: not started
+  5. Scale needed (cells, synapses): not started
+- **Timebox for Phase 1:** until <date you choose>
+- **Blocked / open questions:** -
+- **Next concrete task:** read Hay et al. 2011 and write
+  docs/literature/hay2011.md using the paper template (group 1)
 
-## Appendix: Task card template
+## Appendix: Task card template and Glossary
 
 ```
 # Task: <short name>
@@ -157,3 +160,20 @@ Params touched and their source/status:
 Branch: 
 Notes / result: 
 ```
+## Glossary and key context (read this first, AI assistants, ask for any context or files if needed)
+
+- Hay et al. 2011: published model of a layer 5b pyramidal cell (ModelDB
+  3343), used unmodified in thirdparty/hay2011/. Our code loads it through
+  src/cells/hay_wrapper.py.
+- BAC firing (Hay Fig 4A): a 5 ms somatic pulse (1.9 nA) paired 5 ms later
+  with an EPSP-like current (0.5 nA) at a distal apical site (620 um from
+  the soma) produces a burst with a dendritic calcium spike. In Python:
+  run_bac_protocol (src/protocols/hay_protocols.py). Our result: pulse
+  alone 1 spike, current alone 0, both 3.
+- Step-current firing (Hay Fig 4B): a 2000 ms somatic step. Amplitudes
+  0.619 / 0.793 / 1.507 nA gave 22 / 27 / 39 spikes in our reproduction;
+  the 0.793 nA count (27) matches the original GUI demo exactly.
+- ET cells: extratelencephalic layer 5 pyramidal cells, the cell type
+  the hypothesis is about.
+- The hypothesis paper is docs/literature/Hypercontextualisation_NBR_submit.docx.
+- Tests: tests/test_baseline.py and tests/test_hay_protocols.py.
