@@ -160,7 +160,7 @@ Params touched and their source/status:
 Branch: 
 Notes / result: 
 ```
-## Glossary and key context (read this first, AI assistants, ask for any context or files if needed)
+Glossary and key context (read this first, AI assistants, ask for any context or files if needed)
 
 - Hay et al. 2011: published model of a layer 5b pyramidal cell (ModelDB
   3343), used unmodified in thirdparty/hay2011/. Our code loads it through
