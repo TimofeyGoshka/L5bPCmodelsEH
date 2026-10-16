@@ -35,15 +35,20 @@ Open points the paper itself leaves unresolved: the location of the postsynaptic
 ## 4. Phases
 
 ### Phase 0: Reset and framework _(timebox: ~1 week, adjust)_
-- [ ] Create repo structure, pinned environment (`environment.yml`), `.gitignore`
-- [ ] Compile NEURON mechanisms (`nrnivmodl`) from a clean checkout
-- [ ] Audit existing code: what exists, what runs, what has been validated against a published result (done; notes in legacy/README.md)
-- [ ] Freeze feature additions; move ideas to `docs/backlog.md`
-- [ ] Write `docs/DECISIONS.md` (first entry: NEURON throughout)
+-- [x] Create repo structure, requirements.txt, .gitignore
+- [x] Compile NEURON mechanisms (nrnivmodl in thirdparty/hay2011/mod)
+- [x] Review existing code (notes in legacy/README.md)
+- [x] Freeze feature additions; ideas go to docs/backlog.md
+- [x] Write docs/DECISIONS.md
+- [x] Hay wrapper (src/cells/hay_wrapper.py) and sanity test
+- [x] Reproduce original demos in Python (src/protocols/hay_protocols.py);
+      step count at 0.793 nA matches the original GUI demo exactly (27)
+- [x] Fresh-clone test: clone the repo into a new folder, compile the
+      mechanisms, run both tests
 
 **Exit when:** a clean checkout runs the baseline L5 cell and reproduces a known behaviour, and this file is up to date.
 
-### Phase 1: Literature research _(timebox: ~3-4 weeks, adjust)_
+### Phase 1: Literature research _(timebox: 10.16.26 to 08.11.26)_
 Organized by questions. No conclusions drawn yet.
 
 1. **L5 cell models:** What does the Hay et al. model reproduce about apical-basal coupling and burst firing, and where does it fall short? How do ET cells differ from other L5 types? Are there better-suited models?
@@ -100,37 +105,27 @@ Decide whether to iterate, extend, or write up.
 ## 7. Repo structure
 
 ```
-cortical-column-5ht2a/
+L5bPCmodelsEH/
 ├── README.md
-├── docs/
-│   ├── PROJECT.md        # this file
-│   ├── DECISIONS.md      # dated log of choices and reasons
-│   ├── EXPERIMENTS.md    # question, prediction, result per experiment
-│   ├── REVIEW.md         # AI cross-review notes
-│   ├── backlog.md        # parked realism ideas
-│   └── literature/       # notes per paper, bibliography
-├── src/                  # cells, thalamus, network, stimuli
-├── mechanisms/           # NEURON .mod files
-├── params/               # parameters with source + status
-├── configs/              # one file per experiment (seed, params, duration)
-├── experiments/          # scripts that run a config and save results
-├── analysis/             # metrics and figures
-├── tests/                # sanity tests (baseline behaviour)
-├── results/              # outputs, mostly git-ignored
-├── environment.yml
-├── legacy/
-└── .gitignore
-```
+├── requirements.txt
+├── docs/                  # PROJECT.md, DECISIONS.md, backlog.md, literature/
+├── thirdparty/hay2011/    # original Hay model, unmodified
+├── legacy/                # old scripts, reference only
+├── src/
+│   ├── cells/hay_wrapper.py
+│   └── protocols/hay_protocols.py
+└── tests/                 # test_baseline.py, test_hay_protocols.py
 
 Every run saves its config, random seed and git commit hash with its results.
 
 ## 8. Status _(update at the end of each session)_
 
-- **Current phase:** 0 (Reset and framework)
-- **Last updated:** _YYYY-MM-DD_
-- **Done so far:** _..._
-- **Blocked / open questions:** _..._
-- **Next concrete task:** _..._
+- Current phase: 0 (Reset and framework), finishing
+- Last updated: 2026-10-14
+- Done so far: repo, environment, Hay wrapper, step and BAC protocols
+  reproduced in Python; step count matches the original demo exactly
+- Blocked / open questions: end product and time per week still TBD (section 1)
+- Next concrete task: compare with paper Fig 4, fresh-clone test, then Phase 1
 
 ## 9. Decision log _(newest first; full detail in `docs/DECISIONS.md`)_
 
@@ -145,6 +140,9 @@ Every run saves its config, random seed and git commit hash with its results.
   NEURON and Brian2).
 - 2026-10-10: Literature review precedes scientific scoping and acceptance
   criteria.
+  - Protocols use CVode (variable step), like the original demos. Resample
+  to a regular grid before any spectral analysis.
+- Reference for reproduction: original GUI demo (step 0.793 nA = 27 spikes).
 
 ## Appendix: Task card template
 
