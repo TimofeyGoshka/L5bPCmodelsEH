@@ -160,6 +160,8 @@ Params touched and their source/status:
 Branch: 
 Notes / result: 
 ```
+
+```
 Glossary and key context (read this first, AI assistants, ask for any context or files if needed)
 
 - Hay et al. 2011: published model of a layer 5b pyramidal cell (ModelDB
@@ -177,3 +179,5 @@ Glossary and key context (read this first, AI assistants, ask for any context or
   the hypothesis is about.
 - The hypothesis paper is docs/literature/Hypercontextualisation_NBR_submit.docx.
 - Tests: tests/test_baseline.py and tests/test_hay_protocols.py.
+
+```
